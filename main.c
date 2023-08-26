@@ -22,10 +22,10 @@ int main(int ac, char *argv[])
 		perror("failed");
 		return (0);
 	}
-	prompt = isatty(STDIN_FILENO) ? "($) " : NULL;
+	prompt = isatty(STDIN_FILENO) ? "$ " : NULL;
 	while (1)
 	{
-		write(STDOUT_FILENO, prompt ? prompt : NULL, prompt ? 4 : 0);
+		write(STDOUT_FILENO, prompt ? prompt : NULL, prompt ? 2 : 0);
 		line_r = getline(&buf, &size_buf, stdin);
 		if (line_r == -1)
 		{
