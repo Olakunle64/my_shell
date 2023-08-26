@@ -19,9 +19,9 @@ void execute_all(char *buff, char *av, char *buf, int *exit_status)
 	char *store;
 	int count = 0, i = 0;
 
-	store = malloc(sizeof(char) * strlen(buff) + 1);
+	store = malloc(sizeof(char) * _strlen(buff) + 1);
 	malloc_ret(store);
-	strcpy(store, buff);
+	_strcpy(store, buff);
 	ptr = strtok(buff, " ");
 	while (ptr != NULL)
 	{

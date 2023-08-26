@@ -16,9 +16,9 @@ int handle_builtin(char *cmd, char *argv, int *exit_status)
 
 	if (white_space_flag(cmd) == true)
 	{
-		store = strdup(cmd);
+		store = _strdup(cmd);
 		av = tokenize(store);
-		if (strcmp(av[0], "exit") == 0)
+		if (_strcmp(av[0], "exit") == 0)
 		{
 			i = 0;
 			while (av[1][i] != '\0')
@@ -41,7 +41,7 @@ int handle_builtin(char *cmd, char *argv, int *exit_status)
 	else
 	{
 	ptr = rm_spaces(cmd);
-	if (strcmp(ptr, "exit") == 0)
+	if (_strcmp(ptr, "exit") == 0)
 	{
 		free_buffers(ptr, cmd, NULL, NULL);
 		exit(*exit_status);
@@ -60,7 +60,7 @@ int handle_builtin(char *cmd, char *argv, int *exit_status)
 
 char **tokenize(char *store)
 {
-	int i = 0;
+	int i = 0, j = 0;
 	char *ptr, **av;
 
 	av = malloc(sizeof(*av) * 2);
@@ -69,8 +69,17 @@ char **tokenize(char *store)
 	ptr = strtok(store, " ");
 	while (ptr != NULL && i < 2)
 	{
-		av[i] = malloc(sizeof(char) * strlen(ptr) + 1);
-		strcpy(av[i], ptr);
+		av[i] = malloc(sizeof(char) * _strlen(ptr) + 1);
+		if (av[i] == NULL)
+		{
+			while (j < i)
+			{
+				free(av[j]);
+				j++;
+			}
+			free (av);
+		}
+		_strcpy(av[i], ptr);
 		ptr = strtok(NULL, " ");
 		i++;
 	}

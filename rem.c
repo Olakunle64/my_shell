@@ -34,7 +34,7 @@ char *rem_string(char *str)
 	ptr = malloc(sizeof(char) * (count + 1));
 	if (ptr == NULL)
 		exit(1);
-	while ((size_t)j < strlen(str))
+	while (j < _strlen(str))
 	{
 		ptr[k] = str[j];
 		j++;

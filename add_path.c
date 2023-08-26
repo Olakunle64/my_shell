@@ -10,7 +10,7 @@
 char *_getenv(const char *name)
 {
 	int i = 0, j = 0;
-	int len = strlen(name);
+	int len = _strlen((char *)name);
 
 	while (environ[i])
 	{
@@ -109,7 +109,7 @@ char *_stat(char *name, char *path)
 			exit(0);
 		}
 	}
-	ptr = malloc((strlen(path) + strlen(store) + 1) * sizeof(char));
+	ptr = malloc((_strlen(path) + _strlen(store) + 1) * sizeof(char));
 	if (ptr == NULL)
 	{
 		if (checker > 0)
@@ -119,9 +119,9 @@ char *_stat(char *name, char *path)
 		}
 		exit(0);
 	}
-	strcpy(ptr, path);
-	ptr[strlen(path)] = '\0';
-	strcat(ptr, store);
+	_strcpy(ptr, path);
+	ptr[_strlen(path)] = '\0';
+	_strcat(ptr, store);
 	if (checker > 0)
 		free(store);
 	return (_stat_sub(ptr, rem, checker));
@@ -145,16 +145,16 @@ char *_stat_sub(char *ptr, char *rem, int checker)
 	{
 		if (checker > 0)
 		{
-		final_string = malloc(sizeof(char) * (strlen(rem) + strlen(ptr) + 1));
+		final_string = malloc(sizeof(char) * (_strlen(rem) + _strlen(ptr) + 1));
 		if (final_string == NULL)
 		{
 			free(ptr);
 			free(rem);
 			exit(0);
 		}
-		strcpy(final_string, ptr);
-		final_string[strlen(ptr)] = '\0';
-		strcat(final_string, rem);
+		_strcpy(final_string, ptr);
+		final_string[_strlen(ptr)] = '\0';
+		_strcat(final_string, rem);
 		free(rem);
 		free(ptr);
 		return (final_string);
@@ -187,7 +187,7 @@ char *handle_path(char *name)
 
 	if (check_for_slash(name) == 0)
 	{
-		ptr = strdup(name);
+		ptr = _strdup(name);
 		if (ptr != NULL)
 			return (ptr);
 	}

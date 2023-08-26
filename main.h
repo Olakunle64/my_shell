@@ -2,8 +2,8 @@
 #define MAIN_H
 
 #include <stdbool.h>
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/wait.h>
@@ -37,5 +37,10 @@ void free_buffers(char *buf1, char *buf2, char *buf3, char *buf4);
 void errmsg_exit(char *exe, char **argv);
 void ex_sub(char *cmd, char *store, char **av, int i);
 char **tokenize(char *store);
+char *_strcat(char *dest, char *src);
+char *_strdup(char *str);
+int _strlen(char *s);
+int _strcmp(char *s1, char *s2);
+char *_strcpy(char *dest, char *src);
 
 #endif /* MAIN_H */

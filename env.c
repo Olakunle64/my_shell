@@ -14,11 +14,11 @@ int env(char *cmd)
 	int i = 0;
 
 	str = rm_spaces(cmd);
-	if (strcmp(str, "env") == 0)
+	if (_strcmp(str, "env") == 0)
 	{
 		while (environ[i])
 		{
-			write(1, environ[i], strlen(environ[i]));
+			write(1, environ[i], _strlen(environ[i]));
 			write(1, "\n", 1);
 			i++;
 		}

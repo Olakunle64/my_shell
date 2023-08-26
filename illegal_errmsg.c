@@ -13,17 +13,17 @@ void errmsg_exit(char *exe, char **argv)
 {
 	char *str = "Illegal number:";
 
-	write(2, exe, strlen(exe));
+	write(2, exe, _strlen(exe));
 	_putchar(':');
 	_putchar(' ');
 	_putchar('1');
 	_putchar(':');
 	_putchar(' ');
-	write(2, argv[0], strlen(argv[0]));
+	write(2, argv[0], _strlen(argv[0]));
 	_putchar(':');
 	_putchar(' ');
-	write(2, str, strlen(str));
+	write(2, str, _strlen(str));
 	_putchar(' ');
-	write(2, argv[1], strlen(argv[1]));
+	write(2, argv[1], _strlen(argv[1]));
 	_putchar('\n');
 }
